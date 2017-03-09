@@ -1,4 +1,7 @@
 const sha1 = require('sha1')
+const getRawBody = require('raw-body')
+const $http = require('superagent')
+const contentType = require('content-type')
 
 // 获取微信调试
 module.exports = opts => {
@@ -18,10 +21,25 @@ module.exports = opts => {
     const str = [token, timestamp, nonce].sort().join(''),
       sha = sha1(str)
 
-    if (sha === signature) {
-      res.send(echostr + '')
-    } else {
-      res.send('err')
+    if (req.method == 'GET') {
+      if (sha === signature) {
+        res.send(echostr + '')
+      } else {
+        res.send('err')
+      }
+    } else if (req.method == 'POST') {
+      if (sha !== signature) return
+      getRawBody(req, {
+        length: req.headers['content-length'],
+        limit: '1mb',
+        encoding: req.headers['charset']
+      }, function (err, string) {
+        if (err) return next(err)
+        req.text = string
+        console.log(req.text)
+        next()
+      })
+
     }
   }
 }

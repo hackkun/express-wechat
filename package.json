@@ -11,6 +11,7 @@
   "dependencies": {
     "ejs": "^2.5.6",
     "express": "^4.15.2",
+    "raw-body": "^2.2.0",
     "sha1": "^1.1.1",
     "superagent": "^3.5.0",
     "wechat": "^2.1.0"

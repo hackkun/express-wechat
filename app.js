@@ -26,7 +26,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('./public'))
 
 // 微信签名认证
-app.use(accessToken(config))
+// app.use(accessToken(config))
 app.use(wechat(config))
 
 // 路由

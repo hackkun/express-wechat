@@ -9,7 +9,6 @@ module.exports = opts => {
     if (isVaildAccessToken(data)) {
       return
     } else {
-      console.log(1)
       getAccessToken(opts)
     }
 
