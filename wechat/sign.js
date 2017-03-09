@@ -32,14 +32,13 @@ module.exports = opts => {
       getRawBody(req, {
         length: req.headers['content-length'],
         limit: '1mb',
-        encoding: req.headers['charset']
+        encoding: contentType.parse(req).parameters.charset
       }, function (err, string) {
         if (err) return next(err)
         req.text = string
-        console.log(req.text)
+        console.log(req.text.toString())
         next()
       })
-
     }
   }
 }
