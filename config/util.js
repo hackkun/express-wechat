@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 // 读取文件
-exports.readFileAsync = (fpath, encoding) => {
+exports.readFileAsync = (fpath, encoding = 'utf8') => {
   return new Promise((resolve, reject) => {
     fs.readFile(fpath, encoding, (err, result) => {
       if (err) reject(err)
