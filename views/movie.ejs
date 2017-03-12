@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>这是电影页面</h1>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+    wx.config({
+      debug: '<%=debug%>',
+      appId: '<%=appId%>',
+      timestamp: '<%=timestamp%>',
+      nonceStr: '<%=nonceStr%>',
+      signature: '<%=signature%>',
+      jsApiList: '<%=jsApiList%>'
+    })
+  </script>
+</body>
+
+</html>
