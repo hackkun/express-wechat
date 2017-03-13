@@ -6,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="/style/weui.css">
 </head>
 
 <body>
   <h1>这是电影页面</h1>
+  <a href="javascript:;" id="openPic" class="weui-btn weui-btn_primary">页面主操作 Normal</a>
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script>
     wx.config({
@@ -18,8 +20,26 @@
       timestamp: '<%=timestamp%>',
       nonceStr: '<%=nonceStr%>',
       signature: '<%=signature%>',
-      jsApiList: '<%=jsApiList%>'
+      jsApiList: ['startRecord', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'getLocation', 'openLocation']
     })
+
+    wx.ready(function () {
+      wx.onMenuShareTimeline({
+        title: '我在分享', // 分享标题
+        link: 'http://doxmate.cool/node-webot/wechat-api/index.html', // 分享链接
+        imgUrl: '', // 分享图标
+        success: function () {
+          console.log(1)
+        },
+        cancel: function () {
+          console.log(2)
+        }
+      })
+    })
+
+    document.getElementById('openPic').ontouchstart = function () {
+      alert(1)
+    }
   </script>
 </body>
 

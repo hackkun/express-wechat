@@ -11,14 +11,21 @@ router.get('/movie', (req, res) => {
     url: 'http://express-wechat.tunnel.2bdata.com/movie'
   }
   api.getJsConfig(param, (err, result) => {
+    console.log(result)
     res.render('movie', {
-      debug: true,
+      debug: result.debug,
       appId: result.appId,
       timestamp: result.timestamp,
       nonceStr: result.nonceStr,
-      signature: result.signature,
-      jsApiList: result.jsApiList
+      signature: result.signature
+      // jsApiList: result.jsApiList
     })
+  })
+})
+
+router.get('/movie/:id', (req, res) => {
+  res.render('movie-detail', {
+    id: req.params.id
   })
 })
 
